@@ -1,4 +1,4 @@
-# Golang API REST com MySQL e Docker
+# Golang API REST with MySQL & Docker
 
 - Install
   * Go
@@ -22,7 +22,7 @@
 ## Set up test database
 
 ```bash
-     docker exec -it mysql_docker bash -l
+    docker exec -it mysql_docker bash -l
 
     mysql -u root -p
 ```
