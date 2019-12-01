@@ -1,0 +1,33 @@
+version: '3'
+services:
+  db:
+    container_name: hardware_store_db
+    image: 'mysql:5.7'
+    environment:
+      - MYSQL_DATABASE=hardwarestore
+      - MYSQL_ROOT_PASSWORD=@root
+      - MYSQL_USER=mysql
+      - MYSQL_PASSWORD=@root
+      - DATABASE_HOST=db
+      - LC_ALL=C.UTF-8
+      - LANG=C.UTF-8
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./data:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d
+  api:
+    build: .
+    restart: on-failure
+    depends_on:
+      - db
+    links:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_NAME=hardwarestore
+      - DB_USER=root
+      - DB_PASS=@root
+    ports:
+      - 5000:5000
