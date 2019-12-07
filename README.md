@@ -10,7 +10,7 @@
 ```bash
     cd $GOPATH/src
 
-    git clone github.com/EricLau1/hardware-store
+    git clone https://github.com/EricLau1/hardware-store.git
 
     cd hardware-store
 
